@@ -16,6 +16,17 @@ To dive into Phala Cloud:
 2.	Read the Documentation: Our comprehensive User Guide provides step-by-step instructions to help you get started.
 3.	Join the Community: Engage with fellow developers on the Phala Forum to share ideas, ask questions, and collaborate.
 
+## Use Phala Cloud
+
+It's easy to deploy arbitrary dockerized applications on Phala Cloud. Check the [User Guide](https://phalanetwork.notion.site/Phala-Cloud-User-Guide-1700317e04a18018a98ed9ea39b02670?pvs=4) for more information.
+
+## Build on Phala Cloud
+
+Phala Cloud API allows you to build your own applications programmatically. It offers all the features availabe on the Cloud Platform.
+
+- [Phala Cloud API](https://cloud-api.phala.network/docs)
+- [Cloud API Examples](https://github.com/Leechael/phala-cloud-api-example) (by @Leechael)
+
 ## Contribution Guidelines
 
 For Feature Requests and Bug Reports:
