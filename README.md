@@ -13,12 +13,12 @@ This space is designed for developers like you to explore, collaborate, and part
 To dive into Phala Cloud:
 
 1.	Explore the Platform: Visit [Phala Cloud](https://cloud.phala.network) to see what it offers.
-2.	Read the Documentation: Our comprehensive User Guide provides step-by-step instructions to help you get started.
+2.	Read the Documentation: Our comprehensive User [Guide](https://phala-network.github.io/phala-cloud-community/) provides step-by-step instructions to help you get started.
 3.	Join the Community: Engage with fellow developers on the Phala Forum to share ideas, ask questions, and collaborate.
 
 ## Use Phala Cloud
 
-It's easy to deploy arbitrary dockerized applications on Phala Cloud. Check the [User Guide](https://phalanetwork.notion.site/Phala-Cloud-User-Guide-1700317e04a18018a98ed9ea39b02670?pvs=4) for more information.
+It's easy to deploy arbitrary dockerized applications on Phala Cloud. Check the [User Guide](https://phala-network.github.io/phala-cloud-community/) for more information.
 
 ## Build on Phala Cloud
 
