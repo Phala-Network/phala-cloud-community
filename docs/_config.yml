@@ -1,0 +1,53 @@
+title: Phala Cloud Docs
+description: Phala Cloud is a cloud service that allows you to deploy arbitrary dockerized applications into TEE.
+baseurl: "/phala-cloud-community"
+url: "https://Phala-Network.github.io"
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+theme: just-the-docs
+just_the_docs:
+  search_enabled: true
+  search:
+    heading_level: 2
+  collections:
+    docs:
+      output: true
+  nav_order: 1
+
+nav:
+  - title: "Introduction"
+    url: "/docs/intro/"
+  - title: "Get Started"
+    url: "/docs/get-started/"
+  - title: "Migrate Applications to TEE"
+    url: "/docs/migration/"
+  - title: "CVM Development"
+    items:
+      - title: "Deploy with Docker Compose"
+        url: "/docs/deployment/deploy-with-docker-compose.md"
+      - title: "Set Secure Environment Variables"
+        url: "/docs/deployment/set-secure-environment-variables.md"
+      - title: "Deploy with Private Docker Image"
+        url: "/docs/deployment/deploy-with-private-docker-image.md"
+      - title: "Access Your Applications"
+        url: "/docs/deployment/access-your-applications.md"
+      - title: "Debug Your Application"
+        url: "/docs/deployment/debug-your-application.md"
+      - title: "Deployment Cheat Sheet"
+        url: "/docs/deployment/deployment-cheat-sheet.md"
+  - title: "CVM Management"
+    url: "/docs/management/"
+  - title: "Resources"
+    url: "/docs/resources/"
+  - title: "Cloud APIs"
+    url: "/docs/cloud-api/"
+  - title: "Reference Architectures"
+    url: "/docs/references/"
+  - title: "Pricing"
+    url: "/docs/pricing/"
+  - title: "FAQs"
+    url: "/docs/faqs/"
+  - title: "Glossary"
+    url: "/docs/glossary/"
