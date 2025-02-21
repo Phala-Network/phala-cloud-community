@@ -5,7 +5,7 @@ url: "https://phala-network.github.io"
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
-destination: ../docs
+destination: docs
 include:
   - imgs
 
