@@ -14,7 +14,7 @@ Click the **Deploy** button in the top-right corner of the cloud [homepage](http
     
     📍 For ElizaOS/Eliza, we recommend changing the image name to **registry-cache.phala.systems/phalanetwork/eliza:v0.1.6-alpha.4** in the Compose file to use the cached image to save downloading time. **Head to the [tutorial](https://www.notion.so/Deploy-Eliza-in-Phala-Cloud-1770317e04a180ecacd2e2af97d25bb7?pvs=21) to see how to play**.
 
-    ![deploy-new-cvm]({{ site.baseurl }}/imgs/deploy-new-cvm.png)
+    ![Deploy New CVM]({{ '/imgs/deploy-new-cvm.png' | relative_url }})
     
 3. Choose the compute resources. There are some preset plans available, or you can customize them for more flexibility.
     1. For the template **`kennethreitz/httpbin`**, we recommend choosing **TEE Starter**.
