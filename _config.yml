@@ -11,6 +11,7 @@ include:
 
 theme: just-the-docs
 just_the_docs:
+  nav_fold: true
   search_enabled: true
   search:
     heading_level: 2
@@ -35,19 +36,20 @@ nav:
   - title: "Migrate Applications to TEE"
     url: "/docs/migration/"
   - title: "CVM Development"
-    items:
+    has_children: true  # Critical for nesting
+    children:
       - title: "Deploy with Docker Compose"
-        url: "/docs/deployment/deploy-with-docker-compose.md"
+        url: "/docs/deployment/deploy-with-docker-compose"
       - title: "Set Secure Environment Variables"
-        url: "/docs/deployment/set-secure-environment-variables.md"
+        url: "/docs/deployment/set-secure-environment-variables"
       - title: "Deploy with Private Docker Image"
-        url: "/docs/deployment/deploy-with-private-docker-image.md"
+        url: "/docs/deployment/deploy-with-private-docker-image"
       - title: "Access Your Applications"
-        url: "/docs/deployment/access-your-applications.md"
+        url: "/docs/deployment/access-your-applications"
       - title: "Debug Your Application"
-        url: "/docs/deployment/debug-your-application.md"
+        url: "/docs/deployment/debug-your-application"
       - title: "Deployment Cheat Sheet"
-        url: "/docs/deployment/deployment-cheat-sheet.md"
+        url: "/docs/deployment/deployment-cheat-sheet"
   - title: "CVM Management"
     url: "/docs/management/"
   - title: "Resources"
