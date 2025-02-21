@@ -69,19 +69,19 @@
     
     "relUrl": "/deployment/"
   },"10": {
-    "doc": "Introduction",
-    "title": "Phala Cloud",
-    "content": "Phala Cloud is a cloud service that allows you to deploy arbitrary dockerized applications into TEE. Features . | Security: All data is encrypted at rest and in transit. | Performance: High-performance TEE computing. | Reliability: Reliable and scalable cloud service. | Ease of use: Easy to use and deploy. | . ",
-    "url": "/phala-cloud-community/intro/#phala-cloud",
+    "doc": "Home",
+    "title": "Phala Cloud Community",
+    "content": "Welcome to the Phala Cloud Community! . This space is designed for developers like you to explore, collaborate, and participate in the evolution of Phala Cloud. Whether you’re here to submit feature requests, report bugs, share your innovative projects and tools built on Phala Cloud, or contribute to our documentation, you’ve come to the right place. | Get Started | Cloud API | Deployment | Management | Migration | Glossary | Contribution | Introduction | Pricing | Resources | FAQ | References | . ",
+    "url": "/phala-cloud-community/#phala-cloud-community",
     
-    "relUrl": "/intro/#phala-cloud"
+    "relUrl": "/#phala-cloud-community"
   },"11": {
-    "doc": "Introduction",
-    "title": "Introduction",
-    "content": ". ",
-    "url": "/phala-cloud-community/intro/",
+    "doc": "Home",
+    "title": "Home",
+    "content": " ",
+    "url": "/phala-cloud-community/",
     
-    "relUrl": "/intro/"
+    "relUrl": "/"
   },"12": {
     "doc": "Reference Architectures",
     "title": "💎 Reference Architectures",
@@ -139,19 +139,19 @@
     
     "relUrl": "/cloud-api/"
   },"20": {
-    "doc": "Get Started",
-    "title": "📌 Get Started - Play with Template",
-    "content": "Step1- Deploy a CVM with Template . Click the Deploy button in the top-right corner of the cloud homepage to access the deployment dashboard. Once there, you need to: . | Set your application name | Choose a template you want to get started or use your Docker compose file. 📍 For ElizaOS/Eliza, we recommend changing the image name to registry-cache.phala.systems/phalanetwork/eliza:v0.1.6-alpha.4 in the Compose file to use the cached image to save downloading time. Head to the tutorial to see how to play. | Choose the compute resources. There are some preset plans available, or you can customize them for more flexibility. | For the template kennethreitz/httpbin, we recommend choosing TEE Starter. | For elizaOS/eliza, we recommend choosing at least TEE Pro. | . | Click the Deploy button to start the deployment process. You will need to wait for a while as the backend sets everything up. | After the deployment is complete, navigate through View Details → Network to see the endpoint information. You can use these endpoints to access the application if you have service serve on. Or switch to Containers tab to view container logs. For example, if you have deployed Eliza, you can see logs in Eliza container like below: . [37m ◎ LOGS [37m Registering service: [0m [37m aws_s3 [0m 32m [\"✓ Service aws_s3 registered successfully\"] [0m [37m [\"◎ Room b850bc30-45f8-0041-a00a-83df46d8555d created successfully.\"] [32m [\"**✓ User Eliza created successfully**.\"] [0m [32m [\"✓ Service browser initialized successfully\"] [0m Initializing ImageDescriptionService . | . Step2 - Verify TEE Proof . | Check the default RA Report . We provide a default Remote Attestation Report (also known as TEE proof), which is displayed in the Worker Dashboard. To view the entire report, click View Details → Attestation. | By clicking the Check Attestation button in the certificate chain section, you will be redirected to the quote explorer, where you can verify the quote. You can share this quote with anyone, as it serves as proof that your program is running inside a genuine TEE. | . Next Steps . | Deploy an Eliza AI Agent in Minutes with the Eliza Template | Create your own application by checking out Migrate Applications to TEE. | . ",
-    "url": "/phala-cloud-community/get-started/#-get-started---play-with-template",
+    "doc": "Introduction",
+    "title": "Phala Cloud",
+    "content": "Phala Cloud is a cloud service that allows you to deploy arbitrary dockerized applications into TEE. Features . | Security: All data is encrypted at rest and in transit. | Performance: High-performance TEE computing. | Reliability: Reliable and scalable cloud service. | Ease of use: Easy to use and deploy. | . ",
+    "url": "/phala-cloud-community/intro/#phala-cloud",
     
-    "relUrl": "/get-started/#-get-started---play-with-template"
+    "relUrl": "/intro/#phala-cloud"
   },"21": {
-    "doc": "Get Started",
-    "title": "Get Started",
-    "content": " ",
-    "url": "/phala-cloud-community/get-started/",
+    "doc": "Introduction",
+    "title": "Introduction",
+    "content": ". ",
+    "url": "/phala-cloud-community/intro/",
     
-    "relUrl": "/get-started/"
+    "relUrl": "/intro/"
   },"22": {
     "doc": "Glossary",
     "title": "📚 Glossary",
@@ -195,13 +195,27 @@
     
     "relUrl": "/pricing/"
   },"28": {
+    "doc": "Get Started",
+    "title": "📌 Get Started - Play with Template",
+    "content": "Step1- Deploy a CVM with Template . Click the Deploy button in the top-right corner of the cloud homepage to access the deployment dashboard. Once there, you need to: . | Set your application name | Choose a template you want to get started or use your Docker compose file. 📍 For ElizaOS/Eliza, we recommend changing the image name to registry-cache.phala.systems/phalanetwork/eliza:v0.1.6-alpha.4 in the Compose file to use the cached image to save downloading time. Head to the tutorial to see how to play. | Choose the compute resources. There are some preset plans available, or you can customize them for more flexibility. | For the template kennethreitz/httpbin, we recommend choosing TEE Starter. | For elizaOS/eliza, we recommend choosing at least TEE Pro. | . | Click the Deploy button to start the deployment process. You will need to wait for a while as the backend sets everything up. | After the deployment is complete, navigate through View Details → Network to see the endpoint information. You can use these endpoints to access the application if you have service serve on. Or switch to Containers tab to view container logs. For example, if you have deployed Eliza, you can see logs in Eliza container like below: . [37m ◎ LOGS [37m Registering service: [0m [37m aws_s3 [0m 32m [\"✓ Service aws_s3 registered successfully\"] [0m [37m [\"◎ Room b850bc30-45f8-0041-a00a-83df46d8555d created successfully.\"] [32m [\"**✓ User Eliza created successfully**.\"] [0m [32m [\"✓ Service browser initialized successfully\"] [0m Initializing ImageDescriptionService . | . Step2 - Verify TEE Proof . | Check the default RA Report . We provide a default Remote Attestation Report (also known as TEE proof), which is displayed in the Worker Dashboard. To view the entire report, click View Details → Attestation. | By clicking the Check Attestation button in the certificate chain section, you will be redirected to the quote explorer, where you can verify the quote. You can share this quote with anyone, as it serves as proof that your program is running inside a genuine TEE. | . Next Steps . | Deploy an Eliza AI Agent in Minutes with the Eliza Template | Create your own application by checking out Migrate Applications to TEE. | . ",
+    "url": "/phala-cloud-community/get-started/#-get-started---play-with-template",
+    
+    "relUrl": "/get-started/#-get-started---play-with-template"
+  },"29": {
+    "doc": "Get Started",
+    "title": "Get Started",
+    "content": " ",
+    "url": "/phala-cloud-community/get-started/",
+    
+    "relUrl": "/get-started/"
+  },"30": {
     "doc": "Deploy with Docker Compose",
     "title": "Set Secure Environment Variables",
     "content": "If your application requires environment variables, DO NOT set them directly in the Docker Compose file. Instead, set them through the Encrypted Secrets section. | First you need to declare the environments in Docker compose file like below: . services: your-service: environment: - OPENAI_API_KEY=${OPENAI_API_KEY_IN_ENV} - TWITTER_API_KEY=${TWITTER_API_KEY_IN_ENV} . And DO NOT set environment with double quotation marks OPENAI_API_KEY=\"${OPENAI_API_KEY_IN_ENV}\" . | Then set ENV values in Encrypted Secrets section. | . ",
     "url": "/phala-cloud-community/deployment/set-secure-environment-variables/#set-secure-environment-variables",
     
     "relUrl": "/deployment/set-secure-environment-variables/#set-secure-environment-variables"
-  },"29": {
+  },"31": {
     "doc": "Deploy with Docker Compose",
     "title": "Deploy with Docker Compose",
     "content": " ",
