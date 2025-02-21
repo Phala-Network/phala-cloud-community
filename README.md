@@ -1,3 +1,9 @@
+---
+layout: default
+title: Phala Cloud Community
+permalink: /
+---
+
 # Phala Cloud Community
 
 Welcome to the Phala Cloud Community!

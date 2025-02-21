@@ -1,0 +1,24 @@
+<h1 id="-faqs">📬 FAQs</h1>
+
+<ol>
+  <li>
+    <p><strong>Can the encrypted environment variable be accessed by any other part, including the host OS?</strong></p>
+
+    <p>No, it’s encrypted on the client side and sent to the CVM using X25519 encryption scheme. The variables can only be decrypted inside the CVM.</p>
+  </li>
+  <li>
+    <p><strong>Can Docker logs be accessed by any other part, including the host OS?</strong></p>
+
+    <p>Currently, the logs are not end-to-end encrypted. However, you can decide whether to make them public under <strong>Advanced Features → Public Logs</strong> during deployment. If you choose public, anyone with the log URL can view them, and the Log URL can be inferred from your instance ID in the public endpoints. If you choose private, no one can access the logs, and you’ll need to configure a log viewer to view them elsewhere.</p>
+  </li>
+  <li>
+    <p><strong>Is application data persistent on the disk?</strong></p>
+
+    <p>Yes, the data you write to the filesystem inside Docker will persist on the disk and be encrypted. Restarting or upgrading will not affect data recovery. To save data on disk, you need to <a href="https://docs.docker.com/reference/compose-file/volumes/">configure volumes</a> in the Docker Compose file and write data to the correct path.</p>
+  </li>
+  <li>
+    <p><strong>How can others verify that my application is running inside a TEE?</strong></p>
+
+    <p>Once the application is successfully launched, you can prove this by providing the RA Report, which can be exported through an endpoint by your Docker application. The RA Report is linked with the application’s runtime information, such as the Docker image hash, the initial arguments passed to the container, and the environment variables.</p>
+  </li>
+</ol>
