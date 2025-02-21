@@ -19,6 +19,14 @@ just_the_docs:
       output: true
   nav_order: 1
 
+# Force all pages to use default layout
+defaults:
+  - scope:
+      path: "" # All files
+    values:
+      layout: default
+      show_nav: true
+
 nav:
   - title: "Introduction"
     url: "/docs/intro/"
