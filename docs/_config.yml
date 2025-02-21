@@ -5,7 +5,7 @@ url: "https://phala-network.github.io"
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
-destination: ../build
+destination: build
 
 theme: just-the-docs
 just_the_docs:
@@ -18,7 +18,7 @@ just_the_docs:
   nav_order: 1
 
 include:
-  - imgs
+  - /docs/imgs
 
 nav:
   - title: "Introduction"

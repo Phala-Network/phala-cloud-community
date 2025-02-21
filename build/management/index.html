@@ -1,0 +1,93 @@
+<h1 id="-cvm-management">💊 CVM Management</h1>
+
+<h3 id="check-logs">Check Logs</h3>
+
+<p>There are two type of logs in Phala TEE cloud. The CVM log and the docker logs.</p>
+
+<p><strong>CVM log</strong>: By clicking on the <strong>Serial Logs</strong> in the CVM card, you can view the CVM log. The CVM log allows you to see how your application is bootstrapped, such as generating the default RA report and downloading Docker images.</p>
+
+<p><img src="/phala-cloud-community/imgs/cvm-log.png" alt="cvm-log" /></p>
+
+<p><strong>Docker logs:</strong> This is your application’s output log. If you chose to make your Docker logs public during deployment in the <strong>Advanced Features</strong> section, anyone with the log URL can view the logs. To view the log, go to the detailed page and navigate to the <strong>Containers</strong> section.</p>
+
+<p><img src="/phala-cloud-community/imgs/container-log.png" alt="container-log" /></p>
+
+<h3 id="set-private-log-viewer">Set Private Log Viewer</h3>
+
+<p>In most cases, you may not want anyone except specific individuals to see the logs. To make your Docker logs private, you can configure a log viewer in the Docker Compose file. For example, you can use the open-source log viewer <a href="https://github.com/amir20/dozzle">Dozzle</a>.</p>
+
+<ol>
+  <li>
+    <p>Generate user data</p>
+
+    <p>On your local machine, generate a Dozzle user authority token using the Dozzle container by running the following command. In this example, we set the username as “Admin,” the password as “secret,” and the role as “admin.”</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">docker</span> <span class="n">run</span> <span class="n">amir20</span><span class="o">/</span><span class="n">dozzle</span> <span class="n">generate</span> <span class="o">--</span><span class="n">name</span> <span class="n">Admin</span> <span class="o">--</span><span class="n">email</span> <span class="n">me</span><span class="nd">@email.net</span> <span class="o">--</span><span class="n">password</span> <span class="n">secret</span> <span class="n">admin</span> <span class="o">|</span> <span class="n">base64</span> <span class="o">-</span><span class="n">w</span> <span class="mi">1000</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Then, setup Dozzle in Docker compose file.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">services</span><span class="p">:</span>
+   <span class="c1"># Viewable logs with dozzle
+</span>   <span class="n">setup</span><span class="p">:</span>
+     <span class="n">image</span><span class="p">:</span> <span class="n">busybox</span>
+     <span class="n">restart</span><span class="p">:</span> <span class="sh">"</span><span class="s">no</span><span class="sh">"</span>
+     <span class="n">volumes</span><span class="p">:</span>
+       <span class="o">-</span> <span class="n">dozzle</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="o">/</span><span class="n">dozzle</span><span class="o">-</span><span class="n">data</span><span class="o">/</span>
+     <span class="n">command</span><span class="p">:</span> <span class="o">&gt;</span>
+       <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="sh">'</span><span class="s">echo </span><span class="sh">"</span><span class="s">use authority token</span><span class="sh">"</span><span class="s"> | base64 -d &gt; /dozzle-data/users.yml || true</span><span class="sh">'</span>
+    
+   <span class="n">dozzle</span><span class="p">:</span>
+     <span class="n">container_name</span><span class="p">:</span> <span class="n">dozzle</span>
+     <span class="n">image</span><span class="p">:</span> <span class="n">amir20</span><span class="o">/</span><span class="n">dozzle</span><span class="p">:</span><span class="n">latest</span>
+     <span class="n">depends_on</span><span class="p">:</span>
+       <span class="o">-</span> <span class="n">setup</span>
+     <span class="n">environment</span><span class="p">:</span>
+       <span class="o">-</span> <span class="n">DOZZLE_AUTH_PROVIDER</span><span class="o">=</span><span class="n">simple</span>
+     <span class="n">volumes</span><span class="p">:</span>
+       <span class="o">-</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">docker</span><span class="p">.</span><span class="n">sock</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">docker</span><span class="p">.</span><span class="n">sock</span>
+       <span class="o">-</span> <span class="n">dozzle</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="o">/</span><span class="n">data</span><span class="o">/</span>
+     <span class="n">ports</span><span class="p">:</span>
+       <span class="o">-</span> <span class="mi">8080</span><span class="p">:</span><span class="mi">8080</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Once the application is running, you will only be able to view the logs using the username and password you set earlier, accessed through the relevant container’s public endpoint.</p>
+  </li>
+</ol>
+
+<h3 id="monitor-your-application">Monitor Your Application</h3>
+
+<p>It’s beneficial to have a way to monitor your application, allowing you to check resource usage, network traffic, and more. For instance, by setting up a node-exporter service in your Docker Compose file, you can connect it with Grafana to enable real-time monitoring.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># Grafana metrics with node_exporter
+</span>  <span class="n">services</span><span class="p">:</span>
+	  <span class="n">node_exporter</span><span class="p">:</span>
+	    <span class="n">image</span><span class="p">:</span> <span class="n">quay</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">prometheus</span><span class="o">/</span><span class="n">node</span><span class="o">-</span><span class="n">exporter</span><span class="p">:</span><span class="n">latest</span>
+	    <span class="n">container_name</span><span class="p">:</span> <span class="n">node_exporter</span>
+	    <span class="n">command</span><span class="p">:</span>
+	      <span class="o">-</span> <span class="sh">'</span><span class="s">--path.rootfs=/host</span><span class="sh">'</span>
+	    <span class="n">network_mode</span><span class="p">:</span> <span class="n">host</span>
+	    <span class="n">pid</span><span class="p">:</span> <span class="n">host</span>
+	    <span class="n">restart</span><span class="p">:</span> <span class="n">unless</span><span class="o">-</span><span class="n">stopped</span>
+	    <span class="n">volumes</span><span class="p">:</span>
+	      <span class="o">-</span> <span class="sh">'</span><span class="s">/:/host:ro,rslave</span><span class="sh">'</span>
+	
+</code></pre></div></div>
+
+<h3 id="upgrade-application">Upgrade Application</h3>
+
+<p>Your application is upgradable even when running inside a TEE. Thanks to the flexible design of the Dstack SDK, the application is not locked into specific hardware. To execute an upgrade, you need to click <strong>Shutdown</strong> on your CVM, then click <strong>Upgrade</strong> to enter the upgrade window.</p>
+
+<p><img src="/imgs/upgrade-cvm.png" alt="upgrade-cvm" /></p>
+
+<p>In the upgrade window, you need to set the new Docker Compose file and environment variables for your application. Note that the <strong>new environment variables will completely override the old ones</strong>, so you must also include any variables you do not intend to update. Once you’ve set everything, click the <strong>Upgrade</strong> button to execute the upgrade. <strong>After the upgrade is complete, you’ll need to start the CVM manually</strong>.</p>
+
+<p><img src="/phala-cloud-community/imgs/update-env.png" alt="update-env" /></p>
+
+<h3 id="resize-resource">Resize Resource</h3>
+
+<p>Phala TEE Cloud supports adjusting compute resources on demand. To do this, click <strong>Resize</strong> on the CVM card and adjust the resources as needed. Remember, you must shut down the CVM before executing the resize, and then start it again after the changes are saved.</p>
+
+<p><img src="/phala-cloud-community/imgs/resize-cvm.png" alt="resize-cvm" /></p>

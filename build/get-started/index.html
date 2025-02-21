@@ -1,0 +1,67 @@
+<h1 id="-get-started---play-with-template">📌 Get Started - Play with Template</h1>
+
+<p><strong>Step1- Deploy a CVM with Template</strong></p>
+
+<p>Click the <strong>Deploy</strong> button in the top-right corner of the cloud <a href="https://cloud.phala.network/">homepage</a> to access the deployment dashboard. Once there, you need to:</p>
+
+<ol>
+  <li>Set your application name</li>
+  <li>
+    <p>Choose a template you want to get started or use your Docker compose file.</p>
+
+    <p>📍 For ElizaOS/Eliza, we recommend changing the image name to <strong>registry-cache.phala.systems/phalanetwork/eliza:v0.1.6-alpha.4</strong> in the Compose file to use the cached image to save downloading time. <strong>Head to the <a href="https://www.notion.so/Deploy-Eliza-in-Phala-Cloud-1770317e04a180ecacd2e2af97d25bb7?pvs=21">tutorial</a> to see how to play</strong>.</p>
+
+    <p><img src="/phala-cloud-community/imgs/deploy-new-cvm.png" alt="deploy-new-cvm" /></p>
+  </li>
+  <li>Choose the compute resources. There are some preset plans available, or you can customize them for more flexibility.
+    <ol>
+      <li>For the template <strong><code class="language-plaintext highlighter-rouge">kennethreitz/httpbin</code></strong>, we recommend choosing <strong>TEE Starter</strong>.</li>
+      <li>
+        <p>For <strong><code class="language-plaintext highlighter-rouge">elizaOS/eliza</code></strong>, we recommend choosing at least <strong>TEE Pro</strong>.</p>
+
+        <p><img src="/phala-cloud-community/imgs/config-compute-resource.png" alt="config-compute-resource" /></p>
+      </li>
+    </ol>
+  </li>
+  <li>Click the <strong>Deploy</strong> button to start the deployment process. You will need to wait for a while as the backend sets everything up.</li>
+  <li>
+    <p>After the deployment is complete, navigate through <strong>View Details → Network</strong> to see the endpoint information. You can use these endpoints to access the application if you have service serve on.</p>
+
+    <p><img src="/phala-cloud-community/imgs/cvm-details.png" alt="cvm-details" /></p>
+
+    <p>Or switch to <strong>Containers</strong> tab to view container logs. For example, <strong>if you have deployed Eliza, you can see logs in Eliza container like below</strong>:</p>
+
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="pi">[</span><span class="nv">37m ◎ LOGS</span>
+ <span class="pi">[</span><span class="nv">37m Registering service</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">0m</span>
+ <span class="pi">[</span><span class="nv">37m aws_s3</span> <span class="pi">[</span><span class="nv">0m</span>
+ <span class="nv">32m</span> <span class="pi">[</span><span class="s2">"</span><span class="s">✓</span><span class="nv"> </span><span class="s">Service</span><span class="nv"> </span><span class="s">aws_s3</span><span class="nv"> </span><span class="s">registered</span><span class="nv"> </span><span class="s">successfully"</span><span class="pi">]</span> <span class="pi">[</span><span class="nv">0m</span>
+    
+ <span class="pi">[</span><span class="nv">37m</span> <span class="pi">[</span><span class="s2">"</span><span class="s">◎</span><span class="nv"> </span><span class="s">Room</span><span class="nv"> </span><span class="s">b850bc30-45f8-0041-a00a-83df46d8555d</span><span class="nv"> </span><span class="s">created</span><span class="nv"> </span><span class="s">successfully."</span><span class="pi">]</span>
+ <span class="pi">[</span><span class="nv">32m</span> <span class="pi">[</span><span class="s2">"</span><span class="s">**✓</span><span class="nv"> </span><span class="s">User</span><span class="nv"> </span><span class="s">Eliza</span><span class="nv"> </span><span class="s">created</span><span class="nv"> </span><span class="s">successfully**."</span><span class="pi">]</span> <span class="pi">[</span><span class="nv">0m</span>
+ <span class="pi">[</span><span class="nv">32m</span> <span class="pi">[</span><span class="s2">"</span><span class="s">✓</span><span class="nv"> </span><span class="s">Service</span><span class="nv"> </span><span class="s">browser</span><span class="nv"> </span><span class="s">initialized</span><span class="nv"> </span><span class="s">successfully"</span><span class="pi">]</span> <span class="pi">[</span><span class="nv">0m</span>
+ <span class="nv">Initializing ImageDescriptionService</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p><strong>Step2 - Verify TEE Proof</strong></p>
+
+<ol>
+  <li>
+    <p>Check the default RA Report</p>
+
+    <p>We provide a default <a href="https://sgx101.gitbook.io/sgx101/sgx-bootstrap/attestation#remote-attestation-primitives">Remote Attestation Report</a> (also known as TEE proof), which is displayed in the Worker Dashboard. To view the entire report, click <strong>View Details → Attestation</strong>.</p>
+
+    <p><img src="/phala-cloud-community/imgs/attestation-page.png" alt="attestation-page" /></p>
+  </li>
+  <li>
+    <p>By clicking the <strong>Check Attestation</strong> button in the certificate chain section, you will be redirected to the <a href="https://proof.t16z.com/">quote explorer</a>, where you can verify the quote. You can share this quote with anyone, as it serves as proof that your program is running inside a genuine TEE.</p>
+  </li>
+</ol>
+
+<p><strong>Next Steps</strong></p>
+
+<ol>
+  <li><strong>Deploy an Eliza AI Agent in Minutes with the Eliza Template</strong></li>
+  <li>Create your own application by checking out <strong>Migrate Applications to TEE.</strong></li>
+</ol>
