@@ -1,6 +1,6 @@
 title: Phala Cloud Docs
 description: Phala Cloud is a cloud service that allows you to deploy arbitrary dockerized applications into TEE.
-baseurl: ""
+baseurl: "/phala-cloud-community"
 url: "https://phala-network.github.io"
 markdown: kramdown
 highlighter: rouge
