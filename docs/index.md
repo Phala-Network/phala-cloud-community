@@ -12,7 +12,7 @@ nav_order: 1
   <p class="subtitle">Deploy confidential workloads with enterprise-grade security</p>
 
   <div class="cta-buttons">
-    <a href="/docs/get-started/" class="button primary">Get Started</a>
+    <a href="{{ site.baseurl }}/docs/get-started/" class="button primary">Get Started</a>
     <a href="https://cloud.phala.network" class="button secondary">Check Dashboard</a>
   </div>
 </div>
