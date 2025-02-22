@@ -2,39 +2,24 @@ name: Build and deploy Jekyll site
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:  # Allow manual triggers
-
 permissions:
-  contents: write
-
+  contents: write  # Add this permissions block
 jobs:
   jekyll:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
       with:
-        persist-credentials: false
+        persist-credentials: false  # Important for token auth
 
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.1
-        bundler-cache: true  # Cache dependencies
-
-    - name: Install dependencies
-      run: |
-        gem install bundler
-        bundle config path vendor/bundle
-        bundle install
 
     - name: Build with Jekyll
-      env:
-        JEKYLL_ENV: production
-      run: |
-        bundle exec jekyll build
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+      uses: helaili/jekyll-action@2.2.0
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_site
+        token: ${{ secrets.GITHUB_TOKEN }}  # Explicit token declaration
+        target_branch: gh-pages
+        build_dir: .
