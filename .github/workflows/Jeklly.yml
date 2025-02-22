@@ -22,4 +22,4 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}  # Explicit token declaration
         target_branch: gh-pages
-        build_dir: docs/
+        build_dir: .
