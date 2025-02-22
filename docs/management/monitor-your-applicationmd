@@ -1,0 +1,26 @@
+---
+title: Monitor Your Application
+parent: CVM Management
+nav_order: 3
+permalink: /docs/management/monitor-your-application
+---
+
+# Monitor Your Application
+
+It's beneficial to have a way to monitor your application, allowing you to check resource usage, network traffic, and more. For instance, by setting up a node-exporter service in your Docker Compose file, you can connect it with Grafana to enable real-time monitoring.
+
+```python
+  # Grafana metrics with node_exporter
+  services:
+	  node_exporter:
+	    image: quay.io/prometheus/node-exporter:latest
+	    container_name: node_exporter
+	    command:
+	      - '--path.rootfs=/host'
+	    network_mode: host
+	    pid: host
+	    restart: unless-stopped
+	    volumes:
+	      - '/:/host:ro,rslave'
+	
+```

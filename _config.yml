@@ -1,17 +1,19 @@
 title: Phala Cloud Docs
 description: Phala Cloud is a cloud service that allows you to deploy arbitrary dockerized applications into TEE.
-baseurl: "/phala-cloud-community"
+baseurl: ""
 url: "https://phala-network.github.io"
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
-destination: docs
 include:
   - imgs
 
 theme: just-the-docs
 just_the_docs:
-  nav_fold: true
+  nav_fold: false
+  nav_level: 2
+  collapse_inactive_sections: false
+  expand_all: true
   search_enabled: true
   search:
     heading_level: 2
@@ -29,14 +31,28 @@ defaults:
       show_nav: true
 
 nav:
+  - title: "Home"
+    url: "/docs/"
   - title: "Introduction"
     url: "/docs/intro/"
   - title: "Get Started"
     url: "/docs/get-started/"
+    children:
+      - title: "Play with Template"
+        url: "/docs/get-started/play-with-template"
   - title: "Migrate Applications to TEE"
     url: "/docs/migration/"
+    children:
+      - title: "Expose Service Port"
+        url: "/docs/migration/expose-service-port"
+      - title: "Generate RA Report"
+        url: "/docs/migration/generate-ra-report"
+      - title: "Access Database"
+        url: "/docs/migration/access-database"
+      - title: "Create Crypto Wallet"
+        url: "/docs/migration/create-crypto-wallet"
   - title: "CVM Development"
-    has_children: true  # Critical for nesting
+    url: "/docs/deployment/"
     children:
       - title: "Deploy with Docker Compose"
         url: "/docs/deployment/deploy-with-docker-compose"
@@ -52,6 +68,17 @@ nav:
         url: "/docs/deployment/deployment-cheat-sheet"
   - title: "CVM Management"
     url: "/docs/management/"
+    children:
+      - title: "Check Logs"
+        url: "/docs/management/check-logs"
+      - title: "Set Private Log Viewer"
+        url: "/docs/management/private-log-viewer"
+      - title: "Monitor Your Application"
+        url: "/docs/management/monitor-your-application"
+      - title: "Upgrade Application"
+        url: "/docs/management/upgrade-application"
+      - title: "Resize Resource"
+        url: "/docs/management/resize-resource"
   - title: "Resources"
     url: "/docs/resources/"
   - title: "Cloud APIs"
