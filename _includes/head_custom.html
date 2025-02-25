@@ -1,0 +1,7 @@
+{% if site.search_enabled != false %}
+  <!-- Add specific version of lunr.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+  
+  <!-- Load the search data -->
+  <script src="{{ '/assets/js/search-data.js' | relative_url }}"></script>
+{% endif %}
