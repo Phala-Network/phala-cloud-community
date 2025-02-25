@@ -13,12 +13,12 @@ This space is designed for developers like you to explore, collaborate, and part
 To dive into Phala Cloud:
 
 1.	Explore the Platform: Visit [Phala Cloud](https://cloud.phala.network) to see what it offers.
-2.	Read the Documentation: Our comprehensive User [Guide](https://phala-network.github.io/phala-cloud-community/) provides step-by-step instructions to help you get started.
+2.	Read the Documentation: Our comprehensive [User Guide](https://phala-network.github.io/phala-cloud-community/docs/) provides step-by-step instructions to help you get started.
 3.	Join the Community: Engage with fellow developers on the Phala Forum to share ideas, ask questions, and collaborate.
 
 ## Use Phala Cloud
 
-It's easy to deploy arbitrary dockerized applications on Phala Cloud. Check the [User Guide](https://phala-network.github.io/phala-cloud-community/) for more information.
+It's easy to deploy arbitrary dockerized applications on Phala Cloud. Check the [User Guide](https://phala-network.github.io/phala-cloud-community/docs/) for more information.
 
 ## Build on Phala Cloud
 
@@ -53,7 +53,7 @@ For detailed guidelines, please refer to our Contribution Guide.
 
 Keep up with the latest developments:
 - [Phala Cloud](https://cloud.phala.network)
-- [Documentation](https://phalanetwork.notion.site/Phala-Cloud-User-Guide-1700317e04a18018a98ed9ea39b02670?pvs=4)
+- [Documentation](https://phala-network.github.io/phala-cloud-community/docs/)
 - Telegram Community: [🌍 Global](https://t.me/+nbhjx1ADG9EyYmI9), [🇨🇳 中文](https://t.me/+4PcAE9qTZ1kzM2M9)
 - [Phala Network Website](https://phala.network)
 - [Phala Discord](https://discord.gg/phala-network)
