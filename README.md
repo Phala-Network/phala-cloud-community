@@ -20,6 +20,18 @@ To dive into Phala Cloud:
 
 It's easy to deploy arbitrary dockerized applications on Phala Cloud. Check the [User Guide](https://phala-network.github.io/phala-cloud-community/docs/) for more information.
 
+Phala Cloud is built on top of [DStack](https://github.com/dstack-TEE/dstack/). To simulate the TEE-specific features, you can use the [tappd simulator](https://github.com/leechael/tappd-simulator/). There are several starter templates available that you can check out to learn more:
+
+- Phala Cloud Python Starter, with FastAPI: https://github.com/Phala-Network/phala-cloud-python-starter
+- Phala Cloud Bun Starter, using Bun + TypeScript: https://github.com/Phala-Network/phala-cloud-bun-starter
+- Phala Cloud NextJS Starter: https://github.com/Phala-Network/nextjs-viem-tee-sim-template
+
+If you want to integrate the SDK into your existing apps, here are the SDKs we currently have:
+
+- JavaScript/TypeScript: https://www.npmjs.com/package/@phala/dstack-sdk
+- Python: https://pypi.org/project/dstack-sdk/
+- Golang: https://pkg.go.dev/github.com/Dstack-TEE/dstack/sdk/go/tappd
+
 ## Build on Phala Cloud
 
 Phala Cloud API allows you to build your own applications programmatically. It offers all the features availabe on the Cloud Platform.
