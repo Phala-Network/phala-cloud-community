@@ -13,12 +13,12 @@ This space is designed for developers like you to explore, collaborate, and part
 To dive into Phala Cloud:
 
 1.	Explore the Platform: Visit [Phala Cloud](https://cloud.phala.network) to see what it offers.
-2.	Read the Documentation: Our comprehensive [User Guide](https://phala-network.github.io/phala-cloud-community/docs/) provides step-by-step instructions to help you get started.
+2.	Read the Documentation: Our comprehensive [documentation](https://phala-network.github.io/phala-cloud-community/docs/) provides step-by-step instructions to help you get started.
 3.	Join the Community: Engage with fellow developers on the Phala Forum to share ideas, ask questions, and collaborate.
 
 ## Use Phala Cloud
 
-It's easy to deploy arbitrary dockerized applications on Phala Cloud. Check the [User Guide](https://phala-network.github.io/phala-cloud-community/docs/) for more information.
+It's easy to deploy arbitrary dockerized applications on Phala Cloud. Check the [documentation](https://phala-network.github.io/phala-cloud-community/docs/) for more information.
 
 Phala Cloud is built on top of [DStack](https://github.com/dstack-TEE/dstack/). To simulate the TEE-specific features, you can use the [tappd simulator](https://github.com/leechael/tappd-simulator/). There are several starter templates available that you can check out to learn more:
 

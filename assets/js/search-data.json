@@ -43,291 +43,312 @@
   },"6": {
     "doc": "Deploy with Private Docker Image",
     "title": "Deploy with Private Docker Image",
-    "content": "Set your personal registry account information in Advanced Features → Custom Docker Registry. For example, if you have pushed images to Docker hub, you may need to set registry URL as https://registry-1.docker.io/. ",
+    "content": "Note: ONLY DStack-0.3.5 and later versions support this feature . ",
     "url": "/phala-cloud-community/docs/deployment/deploy-with-private-docker-image",
     
     "relUrl": "/docs/deployment/deploy-with-private-docker-image"
   },"7": {
+    "doc": "Deploy with Private Docker Image",
+    "title": "Setting with UI",
+    "content": "Phala Cloud supports downloading private Docker images from Docker Registry and AWS ECR Private Registry. You need to set the authorization information in Advanced Features → Private Container Registry.. 💡 Note those authorization information will be encrypted at the E2E level. ",
+    "url": "/phala-cloud-community/docs/deployment/deploy-with-private-docker-image#setting-with-ui",
+    
+    "relUrl": "/docs/deployment/deploy-with-private-docker-image#setting-with-ui"
+  },"8": {
+    "doc": "Deploy with Private Docker Image",
+    "title": "Setting with Encrypted Secrets",
+    "content": "Another way is to setting those information through in Encrypted Secrets. | To download images from Docker Registry, you need to set the following encrypted environment variables: DSTACK_DOCKER_USERNAME and DSTACK_DOCKER_PASSWORD. | To download images from AWS ECR Private Registry, you need to set the following encrypted environment variables: DSTACK_AWS_ACCESS_KEY_ID, DSTACK_AWS_SECRET_ACCESS_KEY, and DSTACK_AWS_REGION, DSTACK_AWS_ECR_REGISTRY. | . ",
+    "url": "/phala-cloud-community/docs/deployment/deploy-with-private-docker-image#setting-with-encrypted-secrets",
+    
+    "relUrl": "/docs/deployment/deploy-with-private-docker-image#setting-with-encrypted-secrets"
+  },"9": {
+    "doc": "Deploy with Private Docker Image",
+    "title": "Setting with Cloud API",
+    "content": "When using Cloud API to deploy, you still need to set above environment variables. Check the Cloud API for more details. ",
+    "url": "/phala-cloud-community/docs/deployment/deploy-with-private-docker-image#setting-with-cloud-api",
+    
+    "relUrl": "/docs/deployment/deploy-with-private-docker-image#setting-with-cloud-api"
+  },"10": {
     "doc": "Deployment Cheat Sheet",
     "title": "📕 Deployment Cheat Sheet",
     "content": ". | Build docker image on x86 linux . Since some developers use Mac ARM, we highly recommend using an x86 machine to build your Docker images before deploying them to our cloud to avoid compatibility issues. See also: . Multi-platform . How to build x86 (and others!) Docker images on an M1 Mac . Run or build x86_64 Docker image on Apple M1, M2, and M3 . | Limit the size of your docker logs to save disk usage . You can config logging options for all of your services to limit the size of the docker logs. x-common: &amp;common-config restart: always logging: driver: \"json-file\" options: max-size: \"100m\" max-file: \"5\" services: example: &lt;&lt;: *common-config image: example:0.1.0 container_name: example ports: - \"8000:8000\" . | . ",
     "url": "/phala-cloud-community/docs/deployment/deployment-cheat-sheet#-deployment-cheat-sheet",
     
     "relUrl": "/docs/deployment/deployment-cheat-sheet#-deployment-cheat-sheet"
-  },"8": {
+  },"11": {
     "doc": "Deployment Cheat Sheet",
     "title": "Deployment Cheat Sheet",
     "content": " ",
     "url": "/phala-cloud-community/docs/deployment/deployment-cheat-sheet",
     
     "relUrl": "/docs/deployment/deployment-cheat-sheet"
-  },"9": {
+  },"12": {
     "doc": "Expose Service Port",
     "title": "Expose Service Port",
     "content": "In Docker, you can specify the HTTP ports you want to expose by configuring port publishing using the format HOST_PORT:CONTAINER_PORT. This configuration forwards requests sent to HOST_PORT to the container’s program listening on CONTAINER_PORT. When deploying your Docker program to Phala TEE Cloud, the process remains the same. You should specify the port mapping in the Docker Compose file using the ports field, as shown below: . services: web: build: . ports: - \"80:8000\" db: image: postgres ports: - \"8001:5432\" . After deployment, you will see two public endpoints on the dashboard. These URLs can be used to publicly access the service running in Docker. Behind the scenes, our cloud platform parses the Docker Compose file and automatically configures the network forwarding. 🎉 Congratulations! You’ve successfully deployed your application into a TEE. If you’re interested in learning more, such as how to prove your application’s integrity to others or manage application logs, keep reading. ",
     "url": "/phala-cloud-community/docs/migration/expose-service-port",
     
     "relUrl": "/docs/migration/expose-service-port"
-  },"10": {
+  },"13": {
     "doc": "Generate RA Report",
     "title": "Generate RA Report Inside the Container",
     "content": "The cloud will generate a default RA report for your application when it is bootstrapped. You can view this report on the dashboard under the Attestation tab and verify it by clicking the Check Attestation button. To generate a new RA report, rather than using the default one, which allows you to prove the execution of your code, you first need to mount the Dstack API socket file to the container by configuring volumes in the Docker Compose file. services: web: image: quay.io/jupyter/base-notebook volumes: - /var/run/tappd.sock:/var/run/tappd.sock . In your application, you can generate the RA report using the Dstack guest SDK, which supports Python, JS, and Go. The user-data field allows you to attach your own data to the RA report. In practice, this is a method to bind the RA report to your application. For example, you can generate a key pair and include the public key. This way, others can verify that the RA report was indeed generated by your program by checking the signature with the public key, after the RA quote itself has been verified. from dstack_sdk import TappdClient # Initialize the client client = TappdClient() # Get quote for a message result = client.tdx_quote('user-data') quote = bytes.fromhex(result.quote) . ",
     "url": "/phala-cloud-community/docs/migration/generate-ra-report#generate-ra-report-inside-the-container",
     
     "relUrl": "/docs/migration/generate-ra-report#generate-ra-report-inside-the-container"
-  },"11": {
+  },"14": {
     "doc": "Generate RA Report",
     "title": "Generate RA Report",
     "content": " ",
     "url": "/phala-cloud-community/docs/migration/generate-ra-report",
     
     "relUrl": "/docs/migration/generate-ra-report"
-  },"12": {
-    "doc": "Introduction",
-    "title": "Introduction",
-    "content": " ",
-    "url": "/phala-cloud-community/docs/intro/",
-    
-    "relUrl": "/docs/intro/"
-  },"13": {
-    "doc": "Introduction",
-    "title": "What is Phala Cloud?",
-    "content": "Phala Cloud is a TEE (Trusted Execution Environment) cloud platform that offers secure, confidential computing solutions for various workloads. ",
-    "url": "/phala-cloud-community/docs/intro/#what-is-phala-cloud",
-    
-    "relUrl": "/docs/intro/#what-is-phala-cloud"
-  },"14": {
-    "doc": "Introduction",
-    "title": "What You Can Build with Phala Cloud",
-    "content": ". | Unruggable, Autonomous AI Agent: Secure and independent AI processing capabilities | Confidential LLM Training/Inference: Protected environment for machine learning operations | Block Builder: Specialized infrastructure for blockchain operations | Intent Solver/Bridge Relayer: Efficient cross-chain communication solutions | FHE/MPC Nodes: Build anti-collusion MPC networks | . ",
-    "url": "/phala-cloud-community/docs/intro/#what-you-can-build-with-phala-cloud",
-    
-    "relUrl": "/docs/intro/#what-you-can-build-with-phala-cloud"
   },"15": {
-    "doc": "Introduction",
-    "title": "Why Choose Phala Cloud?",
-    "content": "Web2 Pricing, More Added Value . | Flexible pricing structure adaptable to diverse workloads | Transparent cost model | Competitive pricing with significant savings compared to alternatives | . Verifiable Computation . | Strong emphasis on secure and verifiable computing with TEE | Enhanced security and trust guarantees for all computations | . Open Source Foundation . | Built on the Dstack SDK, an open-source TEE SDK developed by Phala | Enhanced by contributions from leading teams like Flashbots and Nethermind | Community-driven development and transparency | . ",
-    "url": "/phala-cloud-community/docs/intro/#why-choose-phala-cloud",
-    
-    "relUrl": "/docs/intro/#why-choose-phala-cloud"
-  },"16": {
-    "doc": "Introduction",
-    "title": "Get Started with Phala Cloud",
-    "content": "Check out the Getting Started Guide to learn how to deploy your first application on Phala Cloud. ",
-    "url": "/phala-cloud-community/docs/intro/#get-started-with-phala-cloud",
-    
-    "relUrl": "/docs/intro/#get-started-with-phala-cloud"
-  },"17": {
-    "doc": "Reference Architectures",
-    "title": "💎 Reference Architectures",
-    "content": "Dstack SDK . The Dstack SDK is designed to simplify the process for developers to deploy programs to CVM (Confidential VM) while adhering to security best practices by default. Phala TEE Cloud is a platform built on top of the Dstack SDK, providing developers with a seamless experience for deploying and managing their TEE applications. For more information, please refer to the Dstack documentation. Trust Chain . TODO. Network Topology . TODO. ",
-    "url": "/phala-cloud-community/docs/references/#-reference-architectures",
-    
-    "relUrl": "/docs/references/#-reference-architectures"
-  },"18": {
-    "doc": "Reference Architectures",
-    "title": "Reference Architectures",
-    "content": " ",
-    "url": "/phala-cloud-community/docs/references/",
-    
-    "relUrl": "/docs/references/"
-  },"19": {
-    "doc": "Resources",
-    "title": "🪫 Resources",
-    "content": "Account management . TODO . Limits . TODO . Error handling . | exec /usr/local/bin/docker-entrypoint.sh: exec format error . When you see this error in the CVM logs, it indicates that your Docker images are not compatible with the x86 platform. This may happen if you built the image on an ARM or another platform. To resolve this issue, specify the platform by using the argument --platform linux/amd64 when building your Docker images. | . ",
-    "url": "/phala-cloud-community/docs/resources/#-resources",
-    
-    "relUrl": "/docs/resources/#-resources"
-  },"20": {
-    "doc": "Resources",
-    "title": "Resources",
-    "content": " ",
-    "url": "/phala-cloud-community/docs/resources/",
-    
-    "relUrl": "/docs/resources/"
-  },"21": {
-    "doc": "CVM Management",
-    "title": "💊 CVM Management",
-    "content": "Phala TEE Cloud provides a comprehensive management system for your CVMs, allowing you to monitor, upgrade, and resize your applications. ",
-    "url": "/phala-cloud-community/docs/management/#-cvm-management",
-    
-    "relUrl": "/docs/management/#-cvm-management"
-  },"22": {
-    "doc": "CVM Management",
-    "title": "CVM Management",
-    "content": " ",
-    "url": "/phala-cloud-community/docs/management/",
-    
-    "relUrl": "/docs/management/"
-  },"23": {
-    "doc": "Cloud APIs",
-    "title": "📡 Cloud APIs",
-    "content": "If you want to deploy and manage your CVM through scripts, we offer APIs that can support this. Please refer to the Cloud API documentation for more information. ",
-    "url": "/phala-cloud-community/docs/cloud-api/#-cloud-apis",
-    
-    "relUrl": "/docs/cloud-api/#-cloud-apis"
-  },"24": {
-    "doc": "Cloud APIs",
-    "title": "Cloud APIs",
-    "content": " ",
-    "url": "/phala-cloud-community/docs/cloud-api/",
-    
-    "relUrl": "/docs/cloud-api/"
-  },"25": {
-    "doc": "FAQs",
-    "title": "📬 FAQs",
-    "content": ". | Can the encrypted environment variable be accessed by any other part, including the host OS? . No, it’s encrypted on the client side and sent to the CVM using X25519 encryption scheme. The variables can only be decrypted inside the CVM. | Can Docker logs be accessed by any other part, including the host OS? . Currently, the logs are not end-to-end encrypted. However, you can decide whether to make them public under Advanced Features → Public Logs during deployment. If you choose public, anyone with the log URL can view them, and the Log URL can be inferred from your instance ID in the public endpoints. If you choose private, no one can access the logs, and you’ll need to configure a log viewer to view them elsewhere. | Is application data persistent on the disk? . Yes, the data you write to the filesystem inside Docker will persist on the disk and be encrypted. Restarting or upgrading will not affect data recovery. To save data on disk, you need to configure volumes in the Docker Compose file and write data to the correct path. | How can others verify that my application is running inside a TEE? . Once the application is successfully launched, you can prove this by providing the RA Report, which can be exported through an endpoint by your Docker application. The RA Report is linked with the application’s runtime information, such as the Docker image hash, the initial arguments passed to the container, and the environment variables. | . ",
-    "url": "/phala-cloud-community/docs/faqs/#-faqs",
-    
-    "relUrl": "/docs/faqs/#-faqs"
-  },"26": {
-    "doc": "FAQs",
-    "title": "FAQs",
-    "content": " ",
-    "url": "/phala-cloud-community/docs/faqs/",
-    
-    "relUrl": "/docs/faqs/"
-  },"27": {
-    "doc": "CVM Deployment",
-    "title": "CVM Deployment",
-    "content": "If you prefer to use Cloud UI, you can start with the Deploy with Docker Compose section. Or you can CLI or CI/CD to deploy your application with One Click to Deploy with CI/CD. ",
-    "url": "/phala-cloud-community/docs/deployment/",
-    
-    "relUrl": "/docs/deployment/"
-  },"28": {
-    "doc": "Glossary",
-    "title": "📚 Glossary",
-    "content": "CVM . Confidential VM. TEE . Trusted Execution Environment. RA . Remote Attestation. ",
-    "url": "/phala-cloud-community/docs/glossary/#-glossary",
-    
-    "relUrl": "/docs/glossary/#-glossary"
-  },"29": {
-    "doc": "Glossary",
-    "title": "Glossary",
-    "content": " ",
-    "url": "/phala-cloud-community/docs/glossary/",
-    
-    "relUrl": "/docs/glossary/"
-  },"30": {
-    "doc": "Migrate Applications to TEE",
-    "title": "🐝 Migrate Applications to TEE",
-    "content": "This section will not cover how to containerize your application with Docker. Instead, we assume you have already done so and have tested it locally to ensure all functionalities work well. Our focus here is to demonstrate how to migrate your application into a TEE, ensuring it remains accessible and providing TEE Proof so you can verify its integrity to anyone interested. ",
-    "url": "/phala-cloud-community/docs/migration/#-migrate-applications-to-tee",
-    
-    "relUrl": "/docs/migration/#-migrate-applications-to-tee"
-  },"31": {
-    "doc": "Migrate Applications to TEE",
-    "title": "Migrate Applications to TEE",
-    "content": " ",
-    "url": "/phala-cloud-community/docs/migration/",
-    
-    "relUrl": "/docs/migration/"
-  },"32": {
-    "doc": "Pricing",
-    "title": "💰 Pricing",
-    "content": "| Service | Specs | Hourly Rate | 6-Month Discount | 1-Year Discount | . | Single TEE Computing Unit | Xeon 5th Gen (1 vCPU, 2GB RAM per unit) | $0.14 | $0.12 (14% 🔻) | $0.11 (21%🔻) | . For instance, if you deploy an instance using 4 vCPUs and 8GB of RAM, the cost would be $400 per month. Contact us if you are looking for more discount. ",
-    "url": "/phala-cloud-community/docs/pricing/#-pricing",
-    
-    "relUrl": "/docs/pricing/#-pricing"
-  },"33": {
-    "doc": "Pricing",
-    "title": "Pricing",
-    "content": " ",
-    "url": "/phala-cloud-community/docs/pricing/",
-    
-    "relUrl": "/docs/pricing/"
-  },"34": {
-    "doc": "Get Started",
-    "title": "Get Started",
-    "content": ". | Play with Template | Deploy an Eliza AI Agent in Minutes with the Eliza Template | Create your own application by checking out Migrate Applications to TEE. | . ",
-    "url": "/phala-cloud-community/docs/get-started/",
-    
-    "relUrl": "/docs/get-started/"
-  },"35": {
     "doc": "Home",
     "title": "\n    Phala Cloud is a secure, confidential, and TEE-powered cloud platform\n  ",
     "content": "Deploy confidential workloads with enterprise-grade security . Get Started Check Dashboard 🔐 ",
     "url": "/phala-cloud-community/docs/",
     
     "relUrl": "/docs/"
-  },"36": {
+  },"16": {
     "doc": "Home",
     "title": "Unruggable AI Agent",
     "content": "Deploy autonomous AI agents with confidential LLM training and inference capabilities in a secure TEE environment. ⚡ ",
     "url": "/phala-cloud-community/docs/",
     
     "relUrl": "/docs/"
-  },"37": {
+  },"17": {
     "doc": "Home",
     "title": "Web2 Pricing",
     "content": "Flexible pricing structure with transparent costs and significant savings compared to traditional cloud providers. 🔍 ",
     "url": "/phala-cloud-community/docs/",
     
     "relUrl": "/docs/"
-  },"38": {
+  },"18": {
     "doc": "Home",
     "title": "Verifiable Computation",
     "content": "Strong emphasis on secure and verifiable computing with TEE, ensuring trust and integrity for all operations. 🌟 ",
     "url": "/phala-cloud-community/docs/",
     
     "relUrl": "/docs/"
-  },"39": {
+  },"19": {
     "doc": "Home",
     "title": "Open Source Foundation",
     "content": "Built on the Dstack SDK, an open-source TEE SDK developed by Phala, along with contributions from teams like Flashbots and Nethermind. ",
     "url": "/phala-cloud-community/docs/",
     
     "relUrl": "/docs/"
-  },"40": {
+  },"20": {
     "doc": "Home",
     "title": "Home",
     "content": " ",
     "url": "/phala-cloud-community/docs/",
     
     "relUrl": "/docs/"
+  },"21": {
+    "doc": "Reference Architectures",
+    "title": "💎 Reference Architectures",
+    "content": "Dstack SDK . The Dstack SDK is designed to simplify the process for developers to deploy programs to CVM (Confidential VM) while adhering to security best practices by default. Phala TEE Cloud is a platform built on top of the Dstack SDK, providing developers with a seamless experience for deploying and managing their TEE applications. For more information, please refer to the Dstack documentation. Trust Chain . TODO. Network Topology . TODO. ",
+    "url": "/phala-cloud-community/docs/references/#-reference-architectures",
+    
+    "relUrl": "/docs/references/#-reference-architectures"
+  },"22": {
+    "doc": "Reference Architectures",
+    "title": "Reference Architectures",
+    "content": " ",
+    "url": "/phala-cloud-community/docs/references/",
+    
+    "relUrl": "/docs/references/"
+  },"23": {
+    "doc": "Resources",
+    "title": "🪫 Resources",
+    "content": "Account management . TODO . Limits . TODO . Error handling . | exec /usr/local/bin/docker-entrypoint.sh: exec format error . When you see this error in the CVM logs, it indicates that your Docker images are not compatible with the x86 platform. This may happen if you built the image on an ARM or another platform. To resolve this issue, specify the platform by using the argument --platform linux/amd64 when building your Docker images. | . ",
+    "url": "/phala-cloud-community/docs/resources/#-resources",
+    
+    "relUrl": "/docs/resources/#-resources"
+  },"24": {
+    "doc": "Resources",
+    "title": "Resources",
+    "content": " ",
+    "url": "/phala-cloud-community/docs/resources/",
+    
+    "relUrl": "/docs/resources/"
+  },"25": {
+    "doc": "CVM Management",
+    "title": "💊 CVM Management",
+    "content": "Phala TEE Cloud provides a comprehensive management system for your CVMs, allowing you to monitor, upgrade, and resize your applications. ",
+    "url": "/phala-cloud-community/docs/management/#-cvm-management",
+    
+    "relUrl": "/docs/management/#-cvm-management"
+  },"26": {
+    "doc": "CVM Management",
+    "title": "CVM Management",
+    "content": " ",
+    "url": "/phala-cloud-community/docs/management/",
+    
+    "relUrl": "/docs/management/"
+  },"27": {
+    "doc": "Cloud APIs",
+    "title": "📡 Cloud APIs",
+    "content": "If you want to deploy and manage your CVM through scripts, we offer APIs that can support this. Please refer to the Cloud API documentation for more information. ",
+    "url": "/phala-cloud-community/docs/cloud-api/#-cloud-apis",
+    
+    "relUrl": "/docs/cloud-api/#-cloud-apis"
+  },"28": {
+    "doc": "Cloud APIs",
+    "title": "Cloud APIs",
+    "content": " ",
+    "url": "/phala-cloud-community/docs/cloud-api/",
+    
+    "relUrl": "/docs/cloud-api/"
+  },"29": {
+    "doc": "FAQs",
+    "title": "📬 FAQs",
+    "content": ". | Can the encrypted environment variable be accessed by any other part, including the host OS? . No, it’s encrypted on the client side and sent to the CVM using X25519 encryption scheme. The variables can only be decrypted inside the CVM. | Can Docker logs be accessed by any other part, including the host OS? . Currently, the logs are not end-to-end encrypted. However, you can decide whether to make them public under Advanced Features → Public Logs during deployment. If you choose public, anyone with the log URL can view them, and the Log URL can be inferred from your instance ID in the public endpoints. If you choose private, no one can access the logs, and you’ll need to configure a log viewer to view them elsewhere. | Is application data persistent on the disk? . Yes, the data you write to the filesystem inside Docker will persist on the disk and be encrypted. Restarting or upgrading will not affect data recovery. To save data on disk, you need to configure volumes in the Docker Compose file and write data to the correct path. | How can others verify that my application is running inside a TEE? . Once the application is successfully launched, you can prove this by providing the RA Report, which can be exported through an endpoint by your Docker application. The RA Report is linked with the application’s runtime information, such as the Docker image hash, the initial arguments passed to the container, and the environment variables. | . ",
+    "url": "/phala-cloud-community/docs/faqs/#-faqs",
+    
+    "relUrl": "/docs/faqs/#-faqs"
+  },"30": {
+    "doc": "FAQs",
+    "title": "FAQs",
+    "content": " ",
+    "url": "/phala-cloud-community/docs/faqs/",
+    
+    "relUrl": "/docs/faqs/"
+  },"31": {
+    "doc": "CVM Deployment",
+    "title": "CVM Deployment",
+    "content": "If you prefer to use Cloud UI, you can start with the Deploy with Docker Compose section. Or you can CLI or CI/CD to deploy your application with One Click to Deploy with CI/CD. ",
+    "url": "/phala-cloud-community/docs/deployment/",
+    
+    "relUrl": "/docs/deployment/"
+  },"32": {
+    "doc": "Glossary",
+    "title": "📚 Glossary",
+    "content": "CVM . Confidential VM. TEE . Trusted Execution Environment. RA . Remote Attestation. ",
+    "url": "/phala-cloud-community/docs/glossary/#-glossary",
+    
+    "relUrl": "/docs/glossary/#-glossary"
+  },"33": {
+    "doc": "Glossary",
+    "title": "Glossary",
+    "content": " ",
+    "url": "/phala-cloud-community/docs/glossary/",
+    
+    "relUrl": "/docs/glossary/"
+  },"34": {
+    "doc": "Migrate Applications to TEE",
+    "title": "🐝 Migrate Applications to TEE",
+    "content": "This section will not cover how to containerize your application with Docker. Instead, we assume you have already done so and have tested it locally to ensure all functionalities work well. Our focus here is to demonstrate how to migrate your application into a TEE, ensuring it remains accessible and providing TEE Proof so you can verify its integrity to anyone interested. ",
+    "url": "/phala-cloud-community/docs/migration/#-migrate-applications-to-tee",
+    
+    "relUrl": "/docs/migration/#-migrate-applications-to-tee"
+  },"35": {
+    "doc": "Migrate Applications to TEE",
+    "title": "Migrate Applications to TEE",
+    "content": " ",
+    "url": "/phala-cloud-community/docs/migration/",
+    
+    "relUrl": "/docs/migration/"
+  },"36": {
+    "doc": "Pricing",
+    "title": "💰 Pricing",
+    "content": "| Service | Specs | Hourly Rate | 6-Month Discount | 1-Year Discount | . | Single TEE Computing Unit | Xeon 5th Gen (1 vCPU, 2GB RAM per unit) | $0.14 | $0.12 (14% 🔻) | $0.11 (21%🔻) | . For instance, if you deploy an instance using 4 vCPUs and 8GB of RAM, the cost would be $400 per month. Contact us if you are looking for more discount. ",
+    "url": "/phala-cloud-community/docs/pricing/#-pricing",
+    
+    "relUrl": "/docs/pricing/#-pricing"
+  },"37": {
+    "doc": "Pricing",
+    "title": "Pricing",
+    "content": " ",
+    "url": "/phala-cloud-community/docs/pricing/",
+    
+    "relUrl": "/docs/pricing/"
+  },"38": {
+    "doc": "Get Started",
+    "title": "Get Started",
+    "content": ". | Play with Template | Deploy an Eliza AI Agent in Minutes with the Eliza Template | Create your own application by checking out Migrate Applications to TEE. | . ",
+    "url": "/phala-cloud-community/docs/get-started/",
+    
+    "relUrl": "/docs/get-started/"
+  },"39": {
+    "doc": "Introduction",
+    "title": "Introduction",
+    "content": " ",
+    "url": "/phala-cloud-community/docs/intro/",
+    
+    "relUrl": "/docs/intro/"
+  },"40": {
+    "doc": "Introduction",
+    "title": "What is Phala Cloud?",
+    "content": "Phala Cloud is a TEE (Trusted Execution Environment) cloud platform that offers secure, confidential computing solutions for various workloads. ",
+    "url": "/phala-cloud-community/docs/intro/#what-is-phala-cloud",
+    
+    "relUrl": "/docs/intro/#what-is-phala-cloud"
   },"41": {
+    "doc": "Introduction",
+    "title": "What You Can Build with Phala Cloud",
+    "content": ". | Unruggable, Autonomous AI Agent: Secure and independent AI processing capabilities | Confidential LLM Training/Inference: Protected environment for machine learning operations | Block Builder: Specialized infrastructure for blockchain operations | Intent Solver/Bridge Relayer: Efficient cross-chain communication solutions | FHE/MPC Nodes: Build anti-collusion MPC networks | . ",
+    "url": "/phala-cloud-community/docs/intro/#what-you-can-build-with-phala-cloud",
+    
+    "relUrl": "/docs/intro/#what-you-can-build-with-phala-cloud"
+  },"42": {
+    "doc": "Introduction",
+    "title": "Why Choose Phala Cloud?",
+    "content": "Web2 Pricing, More Added Value . | Flexible pricing structure adaptable to diverse workloads | Transparent cost model | Competitive pricing with significant savings compared to alternatives | . Verifiable Computation . | Strong emphasis on secure and verifiable computing with TEE | Enhanced security and trust guarantees for all computations | . Open Source Foundation . | Built on the Dstack SDK, an open-source TEE SDK developed by Phala | Enhanced by contributions from leading teams like Flashbots and Nethermind | Community-driven development and transparency | . ",
+    "url": "/phala-cloud-community/docs/intro/#why-choose-phala-cloud",
+    
+    "relUrl": "/docs/intro/#why-choose-phala-cloud"
+  },"43": {
+    "doc": "Introduction",
+    "title": "Get Started with Phala Cloud",
+    "content": "Check out the Getting Started Guide to learn how to deploy your first application on Phala Cloud. ",
+    "url": "/phala-cloud-community/docs/intro/#get-started-with-phala-cloud",
+    
+    "relUrl": "/docs/intro/#get-started-with-phala-cloud"
+  },"44": {
     "doc": "One Click to Deploy with CI/CD",
     "title": "One Click to Deploy with CI/CD",
     "content": "Here is a starter template for building a Cloud TEE application easily with CI/CD instead of manually local build and deploy. You can fork following repository to start your own Cloud TEE application. Cloud Tee Starter Template . The Cloud TEE Starter Template by Phala Network simplifies building TEE applications with automated CI/CD workflows. It enables developers to bypass manual processes by automating Docker image builds, registry pushes, and deployment to Phala TEE Cloud using GitHub Actions. Key steps include configuring repository secrets (Docker/Phala credentials), triggering deployments via code changes or manual actions, and monitoring via the Phala Cloud Dashboard. Designed for efficiency, it’s ideal for projects requiring secure, scalable TEE infrastructure. ",
     "url": "/phala-cloud-community/docs/deployment/one-click-to-deploy-with-cicd",
     
     "relUrl": "/docs/deployment/one-click-to-deploy-with-cicd"
-  },"42": {
+  },"45": {
     "doc": "One Click to Deploy with CI/CD",
     "title": "Key Steps of the CI/CD Workflow",
     "content": ". | Fork the repository Cloud Tee Starter Template | Configure the repository secrets | Trigger deployments via code changes or manual actions | Monitor the deployment status via the Phala Cloud Dashboard | . ",
     "url": "/phala-cloud-community/docs/deployment/one-click-to-deploy-with-cicd#key-steps-of-the-cicd-workflow",
     
     "relUrl": "/docs/deployment/one-click-to-deploy-with-cicd#key-steps-of-the-cicd-workflow"
-  },"43": {
+  },"46": {
     "doc": "Play with Template",
     "title": "Play with Template",
     "content": "Step1- Deploy a CVM with Template . Click the Deploy button in the top-right corner of the cloud homepage to access the deployment dashboard. Once there, you need to: . | Set your application name | Choose a template you want to get started or use your Docker compose file. 📍 For ElizaOS/Eliza, we recommend changing the image name to registry-cache.phala.systems/phalanetwork/eliza:v0.1.6-alpha.4 in the Compose file to use the cached image to save downloading time. Head to the tutorial to see how to play. | Choose the compute resources. There are some preset plans available, or you can customize them for more flexibility. | For the template kennethreitz/httpbin, we recommend choosing TEE Starter. | For elizaOS/eliza, we recommend choosing at least TEE Pro. | . | Click the Deploy button to start the deployment process. You will need to wait for a while as the backend sets everything up. | After the deployment is complete, navigate through View Details → Network to see the endpoint information. You can use these endpoints to access the application if you have service serve on. Or switch to Containers tab to view container logs. For example, if you have deployed Eliza, you can see logs in Eliza container like below: . [37m ◎ LOGS [37m Registering service: [0m [37m aws_s3 [0m 32m [\"✓ Service aws_s3 registered successfully\"] [0m [37m [\"◎ Room b850bc30-45f8-0041-a00a-83df46d8555d created successfully.\"] [32m [\"**✓ User Eliza created successfully**.\"] [0m [32m [\"✓ Service browser initialized successfully\"] [0m Initializing ImageDescriptionService . | . Step2 - Verify TEE Proof . | Check the default RA Report . We provide a default Remote Attestation Report (also known as TEE proof), which is displayed in the Worker Dashboard. To view the entire report, click View Details → Attestation. | By clicking the Check Attestation button in the certificate chain section, you will be redirected to the quote explorer, where you can verify the quote. You can share this quote with anyone, as it serves as proof that your program is running inside a genuine TEE. | . Next Steps . | Deploy an Eliza AI Agent in Minutes with the Eliza Template | Create your own application by checking out Migrate Applications to TEE. | . ",
     "url": "/phala-cloud-community/docs/get-started/play-with-template",
     
     "relUrl": "/docs/get-started/play-with-template"
-  },"44": {
+  },"47": {
     "doc": "Set Private Log Viewer",
     "title": "Set Private Log Viewer",
     "content": "In most cases, you may not want anyone except specific individuals to see the logs. To make your Docker logs private, you can configure a log viewer in the Docker Compose file. For example, you can use the open-source log viewer Dozzle. | Generate user data . On your local machine, generate a Dozzle user authority token using the Dozzle container by running the following command. In this example, we set the username as “Admin,” the password as “secret,” and the role as “admin.” . docker run amir20/dozzle generate --name Admin --email me@email.net --password secret admin | base64 -w 1000 . | Then, setup Dozzle in Docker compose file. services: # Viewable logs with dozzle setup: image: busybox restart: \"no\" volumes: - dozzle-data:/dozzle-data/ command: &gt; sh -c 'echo \"use authority token\" | base64 -d &gt; /dozzle-data/users.yml || true' dozzle: container_name: dozzle image: amir20/dozzle:latest depends_on: - setup environment: - DOZZLE_AUTH_PROVIDER=simple volumes: - /var/run/docker.sock:/var/run/docker.sock - dozzle-data:/data/ ports: - 8080:8080 . | Once the application is running, you will only be able to view the logs using the username and password you set earlier, accessed through the relevant container’s public endpoint. | . ",
     "url": "/phala-cloud-community/docs/management/private-log-viewer",
     
     "relUrl": "/docs/management/private-log-viewer"
-  },"45": {
+  },"48": {
     "doc": "Resize Resource",
     "title": "Resize Resource",
     "content": "Phala TEE Cloud supports adjusting compute resources on demand. To do this, click Resize on the CVM card and adjust the resources as needed. Remember, you must shut down the CVM before executing the resize, and then start it again after the changes are saved. ",
     "url": "/phala-cloud-community/docs/management/resize-resource",
     
     "relUrl": "/docs/management/resize-resource"
-  },"46": {
+  },"49": {
     "doc": "Set Secure Environment Variables",
     "title": "Set Secure Environment Variables",
     "content": "If your application requires environment variables, DO NOT set them directly in the Docker Compose file. Instead, set them through the Encrypted Secrets section. | First you need to declare the environments in Docker compose file like below: . services: your-service: environment: - OPENAI_API_KEY=${OPENAI_API_KEY_IN_ENV} - TWITTER_API_KEY=${TWITTER_API_KEY_IN_ENV} . And DO NOT set environment with double quotation marks OPENAI_API_KEY=\"${OPENAI_API_KEY_IN_ENV}\" . | Then set ENV values in Encrypted Secrets section. | . ",
     "url": "/phala-cloud-community/docs/deployment/set-secure-environment-variables",
     
     "relUrl": "/docs/deployment/set-secure-environment-variables"
-  },"47": {
+  },"50": {
     "doc": "Upgrade Application",
     "title": "Upgrade Application",
     "content": "Your application is upgradable even when running inside a TEE. Thanks to the flexible design of the Dstack SDK, the application is not locked into specific hardware. To execute an upgrade, you need to click Shutdown on your CVM, then click Upgrade to enter the upgrade window. In the upgrade window, you need to set the new Docker Compose file and environment variables for your application. Note that the new environment variables will completely override the old ones, so you must also include any variables you do not intend to update. Once you’ve set everything, click the Upgrade button to execute the upgrade. After the upgrade is complete, you’ll need to start the CVM manually. ",
