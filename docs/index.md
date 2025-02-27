@@ -15,6 +15,10 @@ nav_order: 1
     <a href="{{ site.baseurl }}/docs/get-started/" class="button primary">Get Started</a>
     <a href="https://cloud.phala.network" class="button secondary">Check Dashboard</a>
   </div>
+  
+  <div class="community-links">
+    <p>Join our support groups: <a href="https://t.me/+nbhjx1ADG9EyYmI9">🌍 Global</a>, <a href="https://t.me/+4PcAE9qTZ1kzM2M9">🇨🇳 中文</a></p>
+  </div>
 </div>
 
 <div class="features-grid">
