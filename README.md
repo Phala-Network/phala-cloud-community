@@ -2,23 +2,23 @@
 
 Welcome to the Phala Cloud Community!
 
-This space is designed for developers like you to explore, collaborate, and participate in the evolution of [Phala Cloud](https://cloud.phala.network). Whether you're here to submit feature requests, report bugs, share your innovative projects and tools built on [Phala Cloud](https://cloud.phala.network), or contribute to our documentation, you've come to the right place.
+This space is designed for developers like you to explore, collaborate, and participate in the evolution of [Phala Cloud](https://cloud.phala.network/register?invite=PHALAWIKI). Whether you're here to submit feature requests, report bugs, share your innovative projects and tools built on [Phala Cloud](https://cloud.phala.network/register?invite=PHALAWIKI), or contribute to our documentation, you've come to the right place.
 
 ## About Phala Cloud
 
-[Phala Cloud](https://cloud.phala.network) is a decentralized cloud platform that offers secure and scalable computing for Web3 applications. By leveraging Trusted Execution Environments (TEEs), Phala ensures that your applications run in a trustless environment, providing both security and privacy.
+[Phala Cloud](https://cloud.phala.network/register?invite=PHALAWIKI) is a decentralized cloud platform that offers secure and scalable computing for Web3 applications. By leveraging Trusted Execution Environments (TEEs), Phala ensures that your applications run in a trustless environment, providing both security and privacy.
 
 ## Getting Started
 
 To dive into Phala Cloud:
 
-1.	Explore the Platform: Visit [Phala Cloud](https://cloud.phala.network) to see what it offers.
-2.	Read the Documentation: Our comprehensive [documentation](https://phala-network.github.io/phala-cloud-community/docs/) provides step-by-step instructions to help you get started.
+1.	Explore the Platform: Visit [Phala Cloud](https://cloud.phala.network/register?invite=PHALAWIKI) to see what it offers.
+2.	Read the Documentation: Our comprehensive [documentation](https://docs.phala.network/overview/phala-network/phala-cloud) provides step-by-step instructions to help you get started.
 3.	Join the Community: Engage with fellow developers on the Phala Forum to share ideas, ask questions, and collaborate.
 
 ## Use Phala Cloud
 
-It's easy to deploy arbitrary dockerized applications on Phala Cloud. Check the [documentation](https://phala-network.github.io/phala-cloud-community/docs/) for more information.
+It's easy to deploy arbitrary dockerized applications on Phala Cloud. Check the [documentation](https://docs.phala.network/overview/phala-network/phala-cloud) for more information.
 
 Phala Cloud is built on top of [DStack](https://github.com/dstack-TEE/dstack/). To simulate the TEE-specific features, you can use the [tappd simulator](https://github.com/leechael/tappd-simulator/). There are several starter templates available that you can check out to learn more:
 
@@ -38,6 +38,7 @@ Phala Cloud API allows you to build your own applications programmatically. It o
 
 - [Phala Cloud API](https://cloud-api.phala.network/docs)
 - [Cloud API Examples](https://github.com/Leechael/phala-cloud-api-example) (by @Leechael)
+- [Phala Cloud CLI](https://github.com/Phala-Network/tee-cloud-cli.git)
 
 ## Contribution Guidelines
 
@@ -65,7 +66,7 @@ For detailed guidelines, please refer to our Contribution Guide.
 
 Keep up with the latest developments:
 - [Phala Cloud](https://cloud.phala.network)
-- [Documentation](https://phala-network.github.io/phala-cloud-community/docs/)
+- [Documentation](https://docs.phala.network/overview/phala-network/phala-cloud)
 - Telegram Community: [🌍 Global](https://t.me/+nbhjx1ADG9EyYmI9), [🇨🇳 中文](https://t.me/+4PcAE9qTZ1kzM2M9)
 - [Phala Network Website](https://phala.network)
 - [Phala Discord](https://discord.gg/phala-network)
