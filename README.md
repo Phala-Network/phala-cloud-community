@@ -39,6 +39,7 @@ Phala Cloud API allows you to build your own applications programmatically. It o
 - [Phala Cloud API](https://cloud-api.phala.network/docs)
 - [Cloud API Examples](https://github.com/Leechael/phala-cloud-api-example) (by @Leechael)
 - [Phala Cloud CLI](https://github.com/Phala-Network/tee-cloud-cli.git)
+- [Phala Cloud CI/CD GitHub Action Template](https://github.com/Phala-Network/cloud-tee-starter-template)
 
 ## Contribution Guidelines
 
